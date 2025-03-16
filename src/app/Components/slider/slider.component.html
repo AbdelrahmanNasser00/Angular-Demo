@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="slider">
+        <div class="slider-item">
+            <img [src]="slider.currentImg" alt="Slider Item">
+            <div class="slider-item-content">
+                <button (click)="nextImg()">Next</button>
+                <button (click)="playImg()">Play</button>
+                <button (click)="stopImg()">Stop</button>
+                <button (click)="prevImg()">Prev</button>
+            </div>
+        </div>
+    </div>
+</div>
