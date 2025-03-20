@@ -1,0 +1,2 @@
+<button class="btn btn-dark" [disabled]="isUserLogged" (click)="Login()">Login</button>
+<button class="btn btn-dark" [disabled]="!isUserLogged" (click)="Logout()">Logout</button>

@@ -45,4 +45,8 @@ export class UsersService {
   getUserByID(id: number): Observable<User> {
     return this.httpClient.get<User>(`http://localhost:2000/users/${id}`);
   }
+
+  loginUser(credentials: {email: string, password: string}) {
+    return this.httpClient.post<{token: string}>(`http://localhost:2000/login`, credentials);
+  }
 }

@@ -16,7 +16,6 @@ export class AppComponent {
   constructor(private router: Router) {
     this.router.events.subscribe((event) => {
       const validRoutes = [
-        '/',
         '/products',
         '/about',
         '/products/:id',
@@ -24,7 +23,6 @@ export class AppComponent {
         '/shop/:id',
         '/addedit',
         '/addedit/:id',
-        '/signup',
       ];
       this.showHeader = validRoutes.includes(this.router.url);
     });

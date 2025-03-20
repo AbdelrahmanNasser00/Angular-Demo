@@ -10,20 +10,48 @@ import { ShoppingDetailsComponent } from './Components/shopping-details/shopping
 import { AddEditPrdComponent } from './Components/add-edit-prd/add-edit-prd.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { UserDetailsComponent } from './Components/user-details/user-details.component';
+import { userGuard } from './Guards/user.guard';
+import { UserTokenComponent } from './Components/user-token/user-token.component';
+import { LoginFormComponent } from './Components/forms/login-form/login-form.component';
+import { loginGuard } from './Guards/login-guard.guard';
 
 export const routes: Routes = [
   //   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: '', component: SliderComponent },
-  { path: 'products', component: MasterProductsComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'products/:id', component: ProductDetailsComponent },
-  { path: 'signup', component: SignupFormComponent },
-  { path: 'shop', component: ShoppingComponent },
-  { path: 'shop/:id', component: ShoppingDetailsComponent },
-  { path: 'addedit', component: AddEditPrdComponent },
-  { path: 'addedit/:id', component: AddEditPrdComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'dashboard/:id', component: UserDetailsComponent },
+  { path: '', component: LoginFormComponent, canActivate: [loginGuard] },
+  {
+    path: 'products',
+    component: MasterProductsComponent,
+    canActivate: [userGuard],
+  },
+  { path: 'about', component: AboutComponent, canActivate: [userGuard] },
+  {
+    path: 'products/:id',
+    component: ProductDetailsComponent,
+    canActivate: [userGuard],
+  },
+  { path: 'signup', component: SignupFormComponent, canActivate: [loginGuard] },
+  { path: 'shop', component: ShoppingComponent, canActivate: [userGuard] },
+  {
+    path: 'shop/:id',
+    component: ShoppingDetailsComponent,
+    canActivate: [userGuard],
+  },
+  { path: 'addedit', component: AddEditPrdComponent, canActivate: [userGuard] },
+  {
+    path: 'addedit/:id',
+    component: AddEditPrdComponent,
+    canActivate: [userGuard],
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [userGuard],
+  },
+  {
+    path: 'dashboard/:id',
+    component: UserDetailsComponent,
+    canActivate: [userGuard],
+  },
 
   { path: '**', component: ErrorComponent },
 ];

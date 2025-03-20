@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { IProduct } from '../../Models/iproduct';
 import { FormsModule } from '@angular/forms';
 import { StaticDataService } from '../../services/static-data.service';
+import { UserAuthService } from '../../services/user-auth.service';
 
 @Component({
   selector: 'app-header',
@@ -20,9 +21,16 @@ export class HeaderComponent {
     stock: 0,
     thumbnail: '',
   };
-  constructor(private staticData: StaticDataService) {}
+  constructor(
+    private staticData: StaticDataService,
+    private authService: UserAuthService
+  ) {}
 
   addProduct() {
     this.staticData.postProduct(this.product);
+  }
+
+  Logout() {
+    this.authService.LogOut();
   }
 }
